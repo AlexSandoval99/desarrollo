@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <link rel="shortcut icon" type="image/x-icon" href="/lp3/favicon.ico">
-        <title>ALL'Cort</title>
+        <title>LP3</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
@@ -29,7 +29,7 @@
                         <div class="box box-primary">
                     <div class="box-header">
                             <i class="fa fa-list"></i>
-                            <h3 class="box-title">Informe de Cargo</h3>
+                            <h3 class="box-title">Informe de Sucursal</h3>
                             <div class="box-tools">
                                
                     </div>
@@ -38,7 +38,7 @@
                           <div class="row">
                               <?php $opcion = (isset($_REQUEST['opcion'])?$_REQUEST['opcion']:"2"); ?>
                               <div class="col-lg-12 col-md-12 col-xs-12">
-                                  <form action='cargo_print.php' method="GET" accept-charset="UTF-8" class="form-horizontal">
+                                  <form action='sucursal_print.php' method="GET" accept-charset="UTF-8" class="form-horizontal">
                                       <input type="hidden" name="opcion" value="<?php echo $opcion ?>"/>
                                       <div class="box-body" >
                                       <div class="col-lg-4 col-md-4 col-xs-4" >
@@ -48,8 +48,8 @@
                                               </div>
                                               <div class="panel-body">
                                                   <div class="list-group">
-                                                      <a href="cargo_rpt.php?opcion=1" class="list-group-item">Por Codigo</a>
-                                                      <a href="cargo_rpt.php?opcion=2" class="list-group-item">Por Descripcion</a>
+                                                      <a href="sucursal_rpt.php?opcion=1" class="list-group-item">Por Codigo</a>
+                                                      <a href="sucursal_rpt.php?opcion=2" class="list-group-item">Por Descripcion</a>
 
                                                   </div>
                                                        
@@ -65,19 +65,19 @@
                                               </div>
                                               <div class="panel-body">
                                                   <?php if ($opcion==1){
-                                                       $cargo = consultas::get_datos('select * from cargo order by car_cod'); 
+                                                       $sucur = consultas::get_datos('select * from sucursal order by id_sucursal'); 
                                                   }else{
-                                                       $cargo = consultas::get_datos('select * from cargo order by car_descri');
+                                                       $sucur = consultas::get_datos('select * from sucursal order by suc_descri');
                                                   } ?>
                                             
                                                   <div class="form-group">
                                                       <label class="control-label col-lg-2 col-md-2">Desde:</label>
                                                       <div class="col-lg-6 col-md-6 col-xs-6" > 
                                                           <select class="form-control select2" name="vdesde">
-                                                           <?php foreach ($cargo as $car) { ?>
-                                                              <option value="<?php echo ($opcion==1)?$car['car_cod']:$car['car_descri']; ?>">
+                                                           <?php foreach ($sucur as $suc) { ?>
+                                                              <option value="<?php echo ($opcion==1)?$suc['id_sucursal']:$suc['suc_descri']; ?>">
                                                                  
-                                                                    <?php echo($opcion==1)?$car['car_cod']:$car['car_descri'];?></option>   
+                                                                    <?php echo($opcion==1)?$suc['id_sucursal']:$suc['suc_descri'];?></option>   
                                                               <?php }?>
                                                               
                                                           </select>
@@ -87,10 +87,10 @@
                                                       <label class="control-label col-lg-2 col-md-2">Hasta :</label>
                                                       <div class="col-lg-6 col-md-6 col-xs-6" > 
                                                           <select class="form-control select2" name="vhasta">
-                                                         <?php foreach ($cargo as $car) { ?>
-                                                              <option value="<?php echo ($opcion==1)?$car['car_cod']:$car['car_descri']; ?>">
+                                                         <?php foreach ($sucur as $suc) { ?>
+                                                              <option value="<?php echo ($opcion==1)?$suc['id_sucursal']:$suc['suc_descri']; ?>">
                                                                  
-                                                                    <?php echo ($opcion==1)?$car['car_cod']:$car['car_descri'];?></option>   
+                                                                    <?php echo ($opcion==1)?$suc['id_sucursal']:$suc['suc_descri'];?></option>   
                                                               <?php }?>
                                                           </select>
                                                       </div>

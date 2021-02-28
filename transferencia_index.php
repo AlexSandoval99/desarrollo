@@ -109,7 +109,7 @@
                                                                     <a onclick="anula(<?php echo "'".$nue['trans_cod']."_".$nue['trans_fecha']."'"?>)"  class="btn btn-danger btn-sm" role="button" data-title="Anula" 
                                                                        rel="tooltip" data-placement="top" data-toggle="modal" data-target="#anula"> <span class="glyphicon glyphicon-remove"></span></a>  
                                                                     <?php }?>
-                                                                    <a href="compras_print.php?vcom_cod=<?php echo $nue['trans_cod'];?>" class="btn btn-warning btn-sm" role="button" data-title="Imprimir" 
+                                                                    <a href="transferencia_print.php?vtrans_cod=<?php echo $nue['trans_cod'];?>" class="btn btn-warning btn-sm" role="button" data-title="Imprimir" 
                                                                        rel="tooltip" data-placement="top" target="print">
                                                                         <span class="glyphicon glyphicon-print"></span></a>  
                                                     </td>
