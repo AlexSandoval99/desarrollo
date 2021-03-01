@@ -189,7 +189,7 @@
                 //alert($('#cliente').val())
                 $.ajax({
                    type  : "GET",
-                   url   : "/taller/ventas_pedidos.php?vcli_cod="+$('#cliente').val(),
+                   url   : "ventas_pedidos.php?vcli_cod="+$('#cliente').val(),
                    cache : false,
                    beforeSend:function(){
                      $('#detalles_pedidos').html('<img src="img/ajax-loader.gif"/><strong> Cargando...</strong>');  

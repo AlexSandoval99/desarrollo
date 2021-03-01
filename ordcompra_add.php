@@ -122,7 +122,7 @@
                 //alert($('#cliente').val())
                 $.ajax({
                    type  : "GET",
-                   url   : "/taller/pedidos.php?vprv_cod="+$('#prove').val(),
+                   url   : "/pedidos.php?vprv_cod="+$('#prove').val(),
                    cache : false,
                    beforeSend:function(){
                      $('#pedidos').html('<img src="img/ajax-loader.gif"/><strong> Cargando...</strong>');  

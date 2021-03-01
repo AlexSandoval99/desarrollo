@@ -31,7 +31,7 @@
                             <i class="ion ion-clipboard"></i>
                             <h3 class="box-title">Transferencia de Mercadderia</h3>
                             <div class="box-tools">
-                                <a href="Transferencia_add.php" class="btn btn-primary btn-sm pull-right" data-title="Agregar" rel="tooltip" 
+                                <a href="transferencia_add.php" class="btn btn-primary btn-sm pull-right" data-title="Agregar" rel="tooltip" 
                                            data-placement="top">
                                             <i class="fa fa-plus"></i>
                                         </a>

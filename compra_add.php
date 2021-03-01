@@ -144,7 +144,7 @@ pedido
                 //alert($('#cliente').val())
                 $.ajax({
                    type  : "GET",
-                   url   : "/taller/compra_pedidos.php?vprv_cod="+$('#proveedor').val(),
+                   url   : "/compra_pedidos.php?vprv_cod="+$('#proveedor').val(),
                    cache : false,
                    beforeSend:function(){
                      $('#detalles_pedidos').html('<img src="img/ajax-loader.gif"/><strong> Cargando...</strong>');  
