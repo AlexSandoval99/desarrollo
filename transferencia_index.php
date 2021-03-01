@@ -94,14 +94,14 @@
                                                  <?php if($nue['trans_estado']=='EN TRANSITO' && $nue['dest_trans']== $_SESSION['id_sucursal']){?>
                                                                     <a onclick="confirmar(<?php echo "'".$nue['trans_cod']."_".$nue['trans_fecha']."'"?>)" class="btn btn-success btn-sm" role="button" 
                                                                        data-title="Confirmar" rel="tooltip" data-placement="top" data-toggle="modal" data-target="#confirmar"><i class="fa fa-check"></i></a>                                                                    
-                                                                    <a href="transferencia_det?vtrans_cod=<?php echo $nue['trans_cod'];?>" class="btn btn-primary btn-sm" role="button" data-title="Detalles" 
+                                                                    <a href="transferencia_det.php?vtrans_cod=<?php echo $nue['trans_cod'];?>" class="btn btn-primary btn-sm" role="button" data-title="Detalles" 
                                                                        rel="tooltip" data-placement="top">
                                                                         <span class="glyphicon glyphicon-list"></span></a>
                                                                     <?php }?>
                                                          <?php if($nue['trans_estado']=='PENDIENTE'&& $nue['orig_trans']== $_SESSION['id_sucursal']){?>
                                                                     <a onclick="enviar(<?php echo "'".$nue['trans_cod']."_".$nue['trans_fecha']."'"?>)" class="btn btn-primary btn-sm" role="button" 
                                                                        data-title="Enviar" rel="tooltip" data-placement="top" data-toggle="modal" data-target="#confirmar"><i class="fa fa-paper-plane"></i></a>                                                                    
-                                                                    <a href="/transferencia_det?vtrans_cod=<?php echo $nue['trans_cod'];?>" class="btn btn-primary btn-sm" role="button" data-title="Detalles" 
+                                                                    <a href="/transferencia_det.php?vtrans_cod=<?php echo $nue['trans_cod'];?>" class="btn btn-primary btn-sm" role="button" data-title="Detalles" 
                                                                        rel="tooltip" data-placement="top">
                                                                         <span class="glyphicon glyphicon-list"></span></a>
                                                                     <?php }

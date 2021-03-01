@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <link rel="shortcut icon" type="image/x-icon" href="/lp3/favicon.ico">
+        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
         <title>LP3</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -149,7 +149,7 @@
         function add(){
             $.ajax({
                 type    : "GET",
-                url     : "/lp3/usuarios_add.php",
+                url     : "/usuarios_add.php",
                 cache   : false,
                 beforeSend:function(){
                     $("#detalles").html('<strong>Cargando...</strong>')
@@ -162,7 +162,7 @@
             function edit(cod,nick,cla){
                 $.ajax({
                 type    : "GET",
-                url     : "/lp3/usuarios_edit.php?vusu_cod="+cod+"&vusu_nick="+nick,
+                url     : "/usuarios_edit.php?vusu_cod="+cod+"&vusu_nick="+nick,
                 cache   : false,
                 beforeSend:function(){
                     $("#edit").html('<strong>Cargando...</strong>')
