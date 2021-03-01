@@ -27,10 +27,10 @@
                     <!-- acciones dentro del menu emergente-->
                     <li class="user-footer">
                         <div class="pull-left">
-                            <a href="/taller/menu.php" class="btn btn-default">Perfil</a>
+                            <a href="/menu.php" class="btn btn-default">Perfil</a>
                         </div>
                         <div class="pull-right">
-                            <a href="/taller/" class="btn btn-default">Salir</a>
+                            <a href=" " class="btn btn-default">Salir</a>
                         </div>
                     </li>
                 </ul>

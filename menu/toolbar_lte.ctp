@@ -27,7 +27,7 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
             <li class="header">Men&uacute; principal</li>
-            <li><a href="/lp3/menu.php"><span class="glyphicon glyphicon-home"></span> <strong>Inicio</strong></a></li>
+            <li><a href="/menu.php"><span class="glyphicon glyphicon-home"></span> <strong>Inicio</strong></a></li>
 
     <?php
 //Obtener el nombre de los modulos
