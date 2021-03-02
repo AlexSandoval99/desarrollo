@@ -1,6 +1,6 @@
 <?php
 
-include_once './tcpdf/tcpdf.php';
+include_once './tcpdf.php';
 include_once 'clases/conexion.php';
 
 // Extend the TCPDF class to create custom Header and Footer
