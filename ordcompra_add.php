@@ -31,7 +31,7 @@
                             <i class="ion ion-plus"></i>
                             <h3 class="box-title">Agregar Orden de Compra</h3>
                             <div class="box-tools">
-                                <a href="ordventas_index.php" class="btn btn-primary btn-sm pull-right" data-title="Volver" rel="tooltip" 
+                                <a href="ordcompra_index.php" class="btn btn-primary btn-sm pull-right" data-title="Volver" rel="tooltip" 
                                            data-placement="top">
                                             <i class="fa fa-arrow-left"></i>
                                         </a>
