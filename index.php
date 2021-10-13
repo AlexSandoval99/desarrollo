@@ -15,7 +15,7 @@ if($_SESSION){
                
                 padding-top: 40px;
                 padding-bottom: 40px;
-                background: url(img/avatar.png)
+                background: url(img/Fondos.jpg)
             }
             .login{
                 max-width: 330px;
