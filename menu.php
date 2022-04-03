@@ -16,15 +16,12 @@
 
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
-        
         <div class="wrapper">
           
             <?php require 'menu/header_lte.ctp'; ?><!--CABECERA PRINCIPAL-->
             <?php require 'menu/toolbar_lte.ctp';?><!--MENU PRINCIPAL-->
             <div class="content-wrapper">
-              
-                
-          
+               <h1 class="text-center" >BIENVENIDO AL SISTEMA </h1>
             </div>
                   <?php require 'menu/footer_lte.ctp'; ?><!--ARCHIVOS JS-->  
             </div>                  

@@ -4,7 +4,7 @@ class Conectar //DECLARAMOS LA CLASE Conectar
 	public static function con()//DECLARAMOS EL METODO con() DONDE VAMOS A CONECTAR CON NUESTRA BASE DE DATOS
 	{
             //DECLARAMOS LA VARIABLE QUE VA A CONTENER NUESTRA CADENA DE CONEXION
-            $cadena = "host = 'ec2-52-50-171-4.eu-west-1.compute.amazonaws.com' port = '5432' dbname = 'd86kd58vd1nf23' user = 'sceoefnovfgins' password = '738497b6727120360f434eaddeb2e7af5e96bb8fa1d6905965ad569bcde15e6a'";
+             $cadena = "host = 'localhost' port = '5432' dbname = 'TallerP' user = 'postgres' password = '0000'";
             //EJECUTAMOS LA CONEXION Y GUARDAMOS EN LA VARIABLE $con
             $con = pg_connect($cadena) or die ("Error de conexion. ".pg_last_error());
             

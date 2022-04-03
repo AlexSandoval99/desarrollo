@@ -38,10 +38,10 @@
                                         <input type="hidden" name="vemp_cod" value="0">
                                        <div class="form-group">
                                             <label class="control-label col-lg-2 col-md-2 col-sm-2">Cargo:</label>
-                                            <div class="col-lg-4 col-md-4">
+                                            <div class="col-lg-4 col-md-4 col-sm-4">
                                                 <div class="input-group">
                                                     <?php $cargo = consultas::get_datos("select * from cargo order by car_cod");?>
-                                                    <select class="form-control select2" name="vcar_cod" required="">
+                                                    <select class="form-control select2 hide " name="vcar_cod" required="" multiple="multiple" >
                                                         <?php if (!empty($cargo)) {                                                         
                                                         foreach ($cargo as $car) { ?>
                                                         <option value="<?php echo $car['car_cod']?>"><?php echo $car['car_descri']?></option>

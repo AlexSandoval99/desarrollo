@@ -6757,4 +6757,7 @@ button.close {
     display: none !important;
   }
 }
+#e input:checked ~ .checkmark {
+background-color: blue;
+}
 /*# sourceMappingURL=bootstrap.css.map */

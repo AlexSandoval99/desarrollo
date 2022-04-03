@@ -7,13 +7,14 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="<?php if(!empty($_SESSION['usu_foto'])){ echo $_SESSION['usu_foto'];}else{ echo "img/no_disponible.jpg";}?>" class="img-circle" alt="User Image">
+                <img src="<?php if(!empty($_SESSION['usu_foto'])){ echo $_SESSION['usu_foto'];}else{ echo "img/alex.jpg";}?>" class="img-rounded" alt="User Image">
             </div>
             <div class="pull-left info">
                 <p><?php echo $_SESSION['nombres'];?></p>
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
+        <br>
         <!-- search form -->
         <form action="#" method="get" class="sidebar-form">
             <div class="input-group">
@@ -26,8 +27,8 @@
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
-            <li class="header">Men&uacute; principal</li>
-            <li><a href="/menu.php"><span class="glyphicon glyphicon-home"></span> <strong>Inicio</strong></a></li>
+            <li class="header">Menu principal</li>
+            <li><a href="/allcant.2.0/menu.php"><span class="glyphicon glyphicon-home"></span> <strong>Inicio</strong></a></li>
 
     <?php
 //Obtener el nombre de los modulos
@@ -46,7 +47,7 @@
 //Obtener las paginas de acuerdo al modulo
             $paginas=consultas::get_datos("select pag_direc,pag_nombre,leer,insertar,editar,borrar from v_permisos  
             where mod_cod=".$modulo['mod_cod']." and gru_cod =".$_SESSION['gru_cod']
-            ." order by pag_nombre");        
+            ." order by pag_cod");        
         
         ?>                
                 <ul class="treeview-menu">

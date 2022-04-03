@@ -11,12 +11,10 @@ $sql ="select sp_cliente(".$_REQUEST['accion'].",".(!empty($_REQUEST['vcli_cod']
         .(!empty($_REQUEST['vcli_direcc'])?$_REQUEST['vcli_direcc']:"")."') as resul";
 
 $resultado = consultas::get_datos($sql);
-
-if ($resultado[0]['resul']!=null) {
-    $valor = explode("*", $resultado[0]['resul']);
-    $_SESSION['mensaje'] = $valor[0];
-    header("location:".$valor[1]);
-}else{
+if ($resultado[0]['resul']!=NULL){
+    $_SESSION['mensaje'] = $resultado[0]['resul'];
+    header("location:cliente_index.php");
+}else {
     $_SESSION['mensaje'] = "Error al procesar \n".$sql;
-    header("location:cliente_index.php");    
+    header("location:cliente_index.php");
 }

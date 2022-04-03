@@ -149,7 +149,7 @@
         function add(){
             $.ajax({
                 type    : "GET",
-                url     : "/usuarios_add.php",
+                url     : "/allcant.2.0/usuarios_add.php",
                 cache   : false,
                 beforeSend:function(){
                     $("#detalles").html('<strong>Cargando...</strong>')
@@ -162,7 +162,7 @@
             function edit(cod,nick,cla){
                 $.ajax({
                 type    : "GET",
-                url     : "/usuarios_edit.php?vusu_cod="+cod+"&vusu_nick="+nick,
+                url     : "/allcant.2.0/usuarios_edit.php?vusu_cod="+cod+"&vusu_nick="+nick,
                 cache   : false,
                 beforeSend:function(){
                     $("#edit").html('<strong>Cargando...</strong>')
