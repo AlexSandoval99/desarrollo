@@ -23,9 +23,9 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="box box-primary">
                                 <div class="box-header">
-                                    <i class="fa fa-plus"></i> <h3 class="box-title">Agregar Detalle A La Orden</h3>
+                                    <i class="fa fa-plus"></i> <h3 class="box-title">Agregar Detalle A La Etapa</h3>
                                     <div class="box-tools">
-                                        <a href="ordprodu_index.php" class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i></a>
+                                        <a href="confetapa_index.php" class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i></a>
                                     </div>
                                 </div>
                                 <div class="box-body">
@@ -36,7 +36,7 @@
                                     $_SESSION['mensaje']=''; ?>
                                 </div>
                                 <?php }?>                                    
-                                    <?php $compra = consultas::get_datos("select * from v_ord_pro where ordpro_cod = ".$_REQUEST['vordpro_cod']);?>
+                                    <?php $compra = consultas::get_datos("select * from v_receta where rec_cod = ".$_REQUEST['vrec_cod']);?>
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="table-responsive">
@@ -44,20 +44,14 @@
                                                     <thead>
                                                         <tr>
                                                             <th>#</th>
-                                                            <th>Fecha</th>
-                                                            <th>Cliente</th>
-                                                            <th>Sucursal</th>
-                                                            <th>Estado</th>
+                                                            <th>Articulo</th>
                                                         </tr>                                                        
                                                     </thead>
                                                     <tbody>
                                                         <?php foreach ($compra as $com) { ?>
                                                         <tr>
-                                                            <td data-title="#"><?php echo $com['ordpro_cod'];?></td>
-                                                            <td data-title="Fecha"><?php echo $com['orden_fecha'];?></td>
-                                                            <td data-title="Cliente"><?php echo $com['clientes'];?></td>
-                                                            <td data-title="Sucursal"><?php echo $com['suc_descri'];?></td>
-                                                            <td data-title="Estado"><?php echo $com['orden_estad'];?></td>
+                                                            <td data-title="#"><?php echo $com['rec_cod'];?></td>
+                                                            <td data-title="etap"><?php echo $com['art_descri'];?></td>
                                                         </tr>
                                                              
                                                         <?php }?>
@@ -67,40 +61,31 @@
                                         </div>
                                     </div>
                                     <!-- TABLA DETALLE PEDIDOS-->
-                                    <?php $compradet = consultas::get_datos("select ordpro_cod,art_cod,art_descri,mar_descri,ord_cant from v_det_orden where ordpro_cod = ".$_REQUEST['vordpro_cod']." group by ordpro_cod,art_cod,art_descri,mar_descri,ord_cant");?>
+                                    <?php $compradet = consultas::get_datos("select * from v_det_confetapa where rec_cod = ".$_REQUEST['vrec_cod']);?>
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">                                            
                                             <?php if (!empty($compradet)) {?>
                                             <div class="box-header">
-                                                <i class="fa fa-list"></i><h3 class="box-title">Detalle Presupuesto Items</h3>                                        
+                                                <i class="fa fa-list"></i><h3 class="box-title">Detalle de la Configuracion</h3>                                        
                                             </div>                                            
                                             <div class="table-responsive">
                                                 <table class="table table-striped table-condensed table-hover">
                                                     <thead>
                                                         <tr>
                                                             <th>#</th>
-                                                            <th>Articulo</th>
-                                                            <th>Cantidad de Articulo</th>
+                                                            <th>Etapa de Produccion</th>
                                                             <th >Acciones</th>
                                                         </tr>                                                        
                                                     </thead>
                                                     <tbody>
                                                         <?php foreach ($compradet as $det) { ?>
                                                         <tr>
-                                                            <td data-title="#"><?php echo $det['ordpro_cod'];?></td>
-                                                            <td data-title="Articulo"><?php echo $det['art_descri']." ".$det['mar_descri'];?></td>
-                                                            <td data-title="Cantidad de Articulo"><?php echo $det['ord_cant'];?></td>
+                                                            <td data-title="#"><?php echo $det['rec_cod'];?></td>
+                                                            <td data-title="etapa"><?php echo $det['etap_descri'];?></td>
                                                             <td data-title="Acciones">
-<!--                                                                <a onclick="editar(<?php //echo $det['ordpro_cod']?>,<?php echo $det['art_cod']?>)" class="btn btn-success btn-sm" 
-                                                                   data-title="Detalle" rel="tooltip" data-toggle="modal" data-target="#editar">
-                                                                    <i class="glyphicon glyphicon-list"></i></a>-->
-                                                                    <a onclick="borrar(<?php echo "'".$det['ordpro_cod']."_".$det['art_descri']." ".$det['mar_descri']."'"?>)" class="btn btn-danger btn-sm" data-title="Borrar" rel="tooltip" 
-                                                                       data-toggle="modal" data-target="#borrar" data-backdrop="false"  data-dismiss="modal">
-                                                                    <i class="fa fa-trash"></i></a>  
-
-                                                                    <a onclick="editar(<?php echo "'".$det['ordpro_cod']."_".$det['art_cod']."'"?>)" class="btn btn-success btn-sm" 
-                                                                   data-title="Detalle" rel="tooltip" data-toggle="modal"id="mater" data-target="#editar">VISUALIZAR MATERIA PRIMA
-                                                                    <i class="glyphicon glyphicon-list"></i> </a>                                                                   
+                                                                <a onclick="borrar(<?php echo "'".$det['rec_cod']."_".$det['etap_pruducc_cod']."_".$det['etap_descri']."'"?>)" class="btn btn-danger btn-sm" data-title="Borrar" rel="tooltip" 
+                                                                    data-toggle="modal" data-target="#borrar" data-backdrop="false"  data-dismiss="modal">
+                                                                <i class="fa fa-trash"></i></a>                                                                    
                                                             </td>
                                                             
                                                         </tr>
@@ -119,7 +104,36 @@
                                     </div> 
                                     <!-- FIN TABLA DETALLE PEDIDOS-->
                                     <!-- FORMULARIO PARA AGREGAR-->
-                                 
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <form action="confetapa_dcontrol.php" method="POST" accept-charset="utf-8" class="form-horizontal">
+                                        <div class="box-body">
+                                            <input type="hidden" name="accion" value="1">
+                                            <input type="hidden" name="vrec_cod" value="<?php echo $compra[0]['rec_cod'];?>">
+                                            <div class="form-group">
+                                                <label class="control-label col-lg-2 col-md-2 col-sm-2">Etapa de Produccion:</label>
+                                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                                        <?php $etapa = consultas::get_datos("select * from v_etapa ");?>
+                                                    <select class="form-control select2" name="vetap_pruducc_cod" required="" id="etap" >
+                                                            <?php if (!empty($etapa)) {                                                         
+                                                            foreach ($etapa as $etap) { ?>
+                                                            <option value="<?php echo $etap['etap_pruducc_cod']?>"><?php echo $etap['etap_descri']?></option>
+                                                            <?php }                                                    
+                                                            }else{ ?>
+                                                            <option value="">Debe insertar al menos un etapa</option>
+                                                            <?php }?>
+                                                    </select> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="box-footer">
+                                            <button type="submit" class="btn btn-primary pull-right">
+                                                <i class="fa fa-plus"></i> Agregar
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                                     <!-- FIN FORMULARIO PARA AGREGAR-->
                                 </div>
                             </div>
@@ -168,26 +182,19 @@
             
         </script>        
         <script>
-        precio();    
-        function precio(){
-            var valor = $('#mater').val().split('_');
-            $('#vprecio').val(valor[1]);
-        }    
-            
+         
         function borrar(datos){
-            var dat = datos.split('_');
-                $('#si').attr('href','ordprodu_dcontrol.php?vordpro_cod='+dat[0]+'&vart_cod='+dat[2]+'&accion=3');
-                $('#confirmacion').html('<span class="glyphicon glyphicon-question-sign"></span> \n\
-                Desea quitar el articulus <strong>'+dat[1]+'</strong> del orden N° <strong>'+dat[0]+'</strong>?');
+             var dat = datos.split('_');
+                 $('#si').attr('href','confetapa_dcontrol.php?vrec_cod='+dat[0]+'&vetap_pruducc_cod='+dat[1]+'&accion=3');
+                 $('#confirmacion').html('<span class="glyphicon glyphicon-question-sign"></span> \n\
+                 Desea quitar la materia <strong>'+dat[2]+'</strong> del etap</strong>?');
     
         }
         
-        function editar(ped){
-            var mater = ped.split('_') 
-            
+        function editar(ped,art){
             $.ajax({
                 type    : "GET",
-                url     : "/allcant.2.0/ordprodu_dedit.php?vordpro_cod="+mater[0]+"&vart_cod="+mater[1],
+                url     : "/allcant.2.0/ordprodu_dedit.php?vordpro_cod="+ped+"&vetap_pruducc_cod="+art,
                 cache   : false,
                 beforeSend:function(){
                     $("#detalles").html('<strong>Cargando...</strong>')

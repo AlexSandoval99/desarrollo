@@ -30,7 +30,7 @@
                             <a href="/menu.php" class="btn btn-default">Perfil</a>
                         </div>
                         <div class="pull-right">
-                            <a href="localhost/allcant.2.0/" class="btn btn-default">Salir</a>
+                            <a href="/allcant.2.0/index.php" class="btn btn-default">Salir</a>
                         </div>
                     </li>
                 </ul>

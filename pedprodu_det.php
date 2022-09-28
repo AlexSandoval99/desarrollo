@@ -121,7 +121,7 @@
                                                     <div class="form-group">
                                                         <label class="control-label col-lg-2 col-md-2 col-sm-2">Articulos:</label>
                                                         <div class="col-lg-4 col-md-4 col-sm-4">
-                                                                <?php $articulos = consultas::get_datos("select * from v_articulo order by art_descri");?>
+                                                                <?php $articulos = consultas::get_datos("select * from v_articulo where tip_art_cod = 1");?>
                                                             <select class="form-control select2" name="vart_cod" required="" id="articulo" onchange="precio()">
                                                                     <?php if (!empty($articulos)) {                                                         
                                                                     foreach ($articulos as $articulo) { ?>

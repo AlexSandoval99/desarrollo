@@ -24,38 +24,36 @@
             <div class="content">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-xs-12">
-                        <div class="box box-danger">
+                        <div class="box box-warning">
                     <div class="box-header">
-                            <i class="ion ion-trash-b"></i>
-                            <h3 class="box-title">Borrar Marcas</h3>
+                            <i class="ion ion-clipboard"></i>
+                            <h3 class="box-title">Editar Etapas de Produccion</h3>
                             <div class="box-tools">
-                                <a href="marca_index.php" class="btn btn-primary pull-right btn-sm" data-title="Volver">
+                                <a href="etapa_index.php" class="btn btn-primary pull-right btn-sm" data-title="Volver">
                                 <i class="fa fa-arrow-left"></i></a>
                             </div>
                     </div>
-                            <form action="marca_control_1.php" method="POST" accept_charset="utf-8" class="from-horizontal">
-                                <?php $resultado= consultas::get_datos("select * from marca where mar_cod=".$_GET['vmar_cod']) ?>
+                            <form action="etapa_control.php" method="POST" accept_charset="utf-8" class="from-horizontal">
+                                <?php $resultado= consultas::get_datos("select * from etapa where etap_pruducc_cod=".$_GET['vetap_pruducc_cod']) ?>
                                 <div class="box-body">
-                                    <input type="hidden" name="accion" value="3">
-                                    <input type="hidden" name="vmar_cod" value="<?php echo $resultado[0]['mar_cod']?>">
+                                    <input type="hidden" name="accion" value="2">
+                                    <input type="hidden" name="vetap_pruducc_cod" value="<?php echo $resultado[0]['etap_pruducc_cod']?>">
                                     <div class="from-group">
                                         <label class="col-lg-2" control-label>Descripcion</label>
                                         <div class="col-lg-8 col-md-6">
                                             <input type="hidden" name="acction" value="2">
-                                            <input type="hidden" name="vmar_cod" value="<?php echo $resultado[0]['mar_cod']?>">
-                                            <input type="text" class="from-control" name="vmar_descri" value="<?php echo $resultado[0]['mar_descri']?>" required="" readonly="">
+                                            <input type="hidden" name="vetap_pruducc_cod" value="<?php echo $resultado[0]['etap_pruducc_cod']?>">
+                                            <input type="text" class="from-control" name="vetap_descri" value="<?php echo $resultado[0]['etap_descri']?>" required="" autofocus="">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="box-footer">
-                                    <button type="submit" class="btn btn-danger pull-right">
-                                    <span class="glyphicon glyphicon-trash"></span> Modificar
+                                    <button type="submit" class="btn btn-warning pull-right">
+                                    <span class="glyphicon glyphicon-edit"></span> Modificar
                                     </button>
                                 </div>    
                             </form>
              </div>
-             
-                                    </div> 
            </div>
          </div>
             </div>

@@ -29,12 +29,12 @@
                         <div class="box box-primary">
                     <div class="box-header">
                             <i class="ion ion-clipboard"></i>
-                            <h3 class="box-title">Materia Primas</h3>
+                            <h3 class="box-title">Configurar Etapas</h3>
                             <div class="box-tools">
                                 <a class="btn btn-primary btn-sm" data-title = "Agregar" rel="tooltip" 
                                            data-placement="top" data-toggle="modal" data-target="#registrar"> 
                                             <i class="fa fa-plus"></i></a>
-                                <a href="materia_print.php" class="btn btn-primary pull-right btn-sm" data-title="Imprimir" rel="tooltip">
+                                <a href="confetapa_print.php" class="btn btn-primary pull-right btn-sm" data-title="Imprimir" rel="tooltip">
                                 <i class="fa fa-print"></i></a>
                     </div>
                     </div>
@@ -66,26 +66,30 @@
                                         </div>
                                     </form>
                                 <?php
-                                $materia = consultas::get_datos("select * from mater_prim where (mater_cod||mater_descri) ilike '%".(isset($_REQUEST['buscar'])?$_REQUEST['buscar']:'')."%'order by mater_cod");
-                                if (!empty($materia)){ ?>
+                                $confetapa = consultas::get_datos("select * from v_confetapa where (confetapa_cod || art_descri) ilike '%".(isset($_REQUEST['buscar'])?$_REQUEST['buscar']:'')."%'order by confetapa_cod");
+                                if (!empty($confetapa)){ ?>
                                     <div class="table-responsive">
                                         <table class="table col-lg-12 col-md-12 col-xs-12 table-bordered table-striped table-condensed">
                                             <thead>
                                                 <tr>
-                                                    <th>Materia Prima</th>
+                                                    <th>Codigo</th>
+                                                    <th>Articulo</th>
+                                                    <th>Estado</th>
                                                     <th class="text-center">Acciones</th>
                                                     
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php foreach ($materia as $mar ){ ?>
+                                                <?php foreach ($confetapa as $rec ){ ?>
                                                 <tr>
-                                                    <td data-title="descripcion"><?php echo $mar ['mater_descri'];?> </td>
+                                                    <td data-title="Codigo"><?php echo $rec ['confetapa_cod'];?> </td>
+                                                    <td data-title="Articulo"><?php echo $rec ['art_descri'];?> </td>
+                                                    <td data-title="Estado"><?php echo $rec ['confetapa_estad'];?> </td>
                                                     <td data-title="Acciones" class="text-center">
-                                                      <a onclick="editar(<?php echo "'".$mar['mater_cod']."_".$mar['mater_descri']."'"?>)" class="btn btn-warning btn-sm" role="button" data-title="Editar" 
-                                                                       data-toggle="modal" data-target="#editar" rel="tooltip" data-placement="top">
-                                                                        <span class="glyphicon glyphicon-edit"></span></a>
-                                                        <a onclick="borrar(<?php echo "'".$mar['mater_cod']."_".$mar['mater_descri']."'"?>)" class="btn btn-danger btn-sm" role="button" data-title="Borrar" 
+                                                    <a href="confetapa_det.php?vconfetapa_cod=<?php echo $rec['confetapa_cod'];?>" class="btn btn-success btn-sm" role="button" data-title="Detalles" 
+                                                                       rel="tooltip" data-placement="top">
+                                                                        <span class="glyphicon glyphicon-list"></span></a>
+                                                        <a onclick="borrar(<?php echo "'".$rec['confetapa_cod']."_".$rec['art_cod']."_".$rec['art_descri']."'"?>)" class="btn btn-danger btn-sm" role="button" data-title="Borrar" 
                                                                        rel="tooltip" data-placement="top" data-toggle='modal' data-target='#borrar'>
                                                                         <span class="glyphicon glyphicon-trash"></span></a>
                                                     </td>
@@ -99,7 +103,7 @@
                                <?php  } else { ?>
                                 <div class="alert alert-info flat">
                                     <span class="glyphicon glyphicon-info-sign"></span>
-                                    No se ha registrado Materia Primas...
+                                    No se ha registrado Configuracion...
                                 </div> 
                                 <?php }?>
                             </div>
@@ -118,18 +122,27 @@
                               <div class = "modal-header">
                                   <button class = "close" data-dispats = "modal" aria-label = "Cerrar">
                                       <i class = "fa fa-remove"> </i> </button>
-                                      <h4 class = "modal-title"> <i class = "fa fa-plus"> </i> Registrador Materia Primas </h4>
+                                      <h4 class = "modal-title"> <i class = "fa fa-plus"> </i> Registrador Configuracion </h4>
                               </div>
-                              <form action = "materia_control.php" method = "POST" accept-charset = "utf-8" class = "form-horizontal">
+                              <form action = "confetapa_control.php" method = "POST" accept-charset = "utf-8" class = "form-horizontal">
                                   <input type = "hidden" name = "accion" value = "1">
-                                  <input type = "hidden" name = "vmater_cod" value = "0">
+                                  <input type = "hidden" name = "vconfetapa_cod" value = "0">
                                   <div class = "modal-body">
-                                      <div class = "form-group">
-                                          <label class = "control-label col-lg-2 col-sm-2"> Descripción </label>
-                                          <div class = "col-lg-10 col-sm-10">
-                                              <input type = "text" name = "vmater_descri" class = "form-control" required = "" autofocus = "" />
-                                          </div>
-                                      </div>
+                                  <div class="form-group">
+                                                <label class="control-label col-lg-2 col-md-2 col-sm-2">Articulos:</label>
+                                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                                        <?php $articulos = consultas::get_datos("select * from articulo where tip_art_cod = 1");?>
+                                                    <select class="form-control select2" name="vart_cod" required="" id="articulo" >
+                                                            <?php if (!empty($articulos)) {                                                         
+                                                            foreach ($articulos as $articulo) { ?>
+                                                            <option value="<?php echo $articulo['art_cod']?>"><?php echo $articulo['art_descri']?></option>
+                                                            <?php }                                                    
+                                                            }else{ ?>
+                                                            <option value="">Debe insertar al menos un articulo</option>
+                                                            <?php }?>
+                                                    </select> 
+                                                </div>
+                                            </div> 
                                   </div>
                                   <div class = "modal-footer">
                                       <button type = "reset" data-dispats = "modal" class = "btn btn-default pull-left"> <i class = "fa fa-remove"> </i> Cerrar </button>
@@ -151,12 +164,12 @@
                               </div>
                               <form action="materia_control.php" method="POST" accept-charset="utf-8" class="form-horizontal">
                                   <input type="hidden" name="accion" value="2">
-                                  <input type="hidden" name="vmater_cod" id="cod">
+                                  <input type="hidden" name="vconfetapa_cod" id="cod">
                                   <div class="modal-body">
                                       <div class="form-group">
                                           <label class="control-label col-lg-2 col-sm-2">Descripción</label>
                                           <div class="col-lg-10 col-sm-10">
-                                              <input type="text" name="vmater_descri" class="form-control" required="" autofocus="" id="descri"/>
+                                              <input type="text" name="vrec_descri" class="form-control" required="" autofocus="" id="descri"/>
                                           </div>
                                       </div>
                                   </div>
@@ -212,9 +225,9 @@
             };
             function borrar(datos){
                 var dat = datos.split("_");
-                $('#si').attr('href','materia_control.php?vmater_cod='+dat[0]+'&vmater_descri='+dat[1]+'&accion=3');
+                $('#si').attr('href','confetapa_control.php?vconfetapa_cod='+dat[0]+'&vart_cod='+dat[1]+'&accion=3');
                 $('#confirmacion').html('<span class="glyphicon glyphicon-question-sign"></span> \n\
-                Desea borrar la materia <i><strong>'+dat[1]+'</strong></i>?');
+                Desea borrar la materia <i><strong>'+dat[2]+'</strong></i>?');
             }
         </script> 
     </body>

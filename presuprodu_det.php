@@ -109,7 +109,7 @@
                                     </div>
                                        <?php }?>
                                     <!-- TABLA DETALLE PEDIDOS-->
-                                    <?php $compradet = consultas::get_datos("select * from v_detalle_presup_produc where presuprod_cod = ".$_REQUEST['vpresuprod_cod']);?>
+                                    <?php $compradet = consultas::get_datos("select art_cod,presuprod_cod,art_descri,mar_descri,presup_cant,precio_presu,subtotal from v_detalle_presup_produc where  presuprod_cod= ".$_REQUEST['vpresuprod_cod']." group by art_cod,presuprod_cod,art_descri,mar_descri,presup_cant,precio_presu,subtotal");?>
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">                                            
                                             <?php if (!empty($compradet)) {?>
@@ -171,7 +171,7 @@
                                                     <div class="form-group">
                                                         <label class="control-label col-lg-2 col-md-2 col-sm-2">Articulos:</label>
                                                         <div class="col-lg-4 col-md-4 col-sm-4">
-                                                                <?php $articulos = consultas::get_datos("select * from v_articulo order by art_descri");?>
+                                                                <?php $articulos = consultas::get_datos("select * from v_articulo where tip_art_cod = 1");?>
                                                             <select class="form-control select2" name="vart_cod" required="" id="articulo" onchange="precio()">
                                                                     <?php if (!empty($articulos)) {                                                         
                                                                     foreach ($articulos as $articulo) { ?>

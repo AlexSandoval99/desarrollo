@@ -22,6 +22,13 @@
             <?php require 'menu/toolbar_lte.ctp';?><!--MENU PRINCIPAL-->
             <div class="content-wrapper">
                <h1 class="text-center" >BIENVENIDO AL SISTEMA </h1>
+                <?php if (!empty($_SESSION['mensaje'])){ ?>
+                        <div class="alert alert-success" role="alert" id="mensaje">
+                            <span class="glyphicon glyphicon-exclamation-sign"></span>
+                            <?php echo $_SESSION['mensaje'];
+                            $_SESSION['mensaje']='';?>
+                        </div>
+                        <?php } ?> 
             </div>
                   <?php require 'menu/footer_lte.ctp'; ?><!--ARCHIVOS JS-->  
             </div>                  
@@ -29,3 +36,8 @@
         
     </body>
 </html>
+ <script>
+        $("#mensaje").delay(4000).slideUp(200, function() {
+        $(this).alert('close');
+        });
+ </script>

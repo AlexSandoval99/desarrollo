@@ -67,7 +67,7 @@ if($_SESSION){
                     <label class="checkbox">
                         <input type="checkbox" value="1" name="recuerdame"/>No cerrar Sesion
                     </label>
-                    <p class="help-block"><a href="no">No puede acceder a su cuenta?</a></p>
+                    <p class="help-block"><a href="#">No puede acceder a su cuenta?</a></p>
                 </div>
                 <?php if (!empty($_SESSION ['error'])) {?>
                 <div class="alert alert-danger">

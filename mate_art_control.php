@@ -9,8 +9,7 @@ $sql ="select sp_articulo(".$_REQUEST['accion'].",".(!empty($_REQUEST['vart_cod'
         .(!empty($_REQUEST['vart_descri'])?$_REQUEST['vart_descri']:"")."',"
         .(!empty($_REQUEST['vart_precioc'])?$_REQUEST['vart_precioc']:"0").","
         .(!empty($_REQUEST['vart_preciov'])?$_REQUEST['vart_preciov']:"0").","
-        .(!empty($_REQUEST['vtipo_cod'])?$_REQUEST['vtipo_cod']:"0").","
-        .(!empty($_REQUEST['vtip_art_cod'])?$_REQUEST['vtip_art_cod']:"0").") as resul";
+        .(!empty($_REQUEST['vtipo_cod'])?$_REQUEST['vtipo_cod']:"0").") as resul";
 
 $resultado = consultas::get_datos($sql);
 
